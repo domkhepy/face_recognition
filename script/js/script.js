@@ -1,4 +1,5 @@
 const video = document.getElementById('video');
+const captureButton = document.getElementById('video');
 
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
@@ -32,5 +33,32 @@ video.addEventListener("play", () => {
       faceapi.draw.drawDetections(canvas, resizedDetections);  
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);  
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections);  
+
+      console.log(resizedDetections);
     }, 100);  
   });
+
+
+
+  captureButton.addEventListener('click', () => {  
+    // Pausar o vídeo  
+    const stream = video.srcObject;  
+    const tracks = stream.getTracks();  
+
+    tracks.forEach(track => track.stop());  
+    video.srcObject = null;  
+
+    // Captura a imagem do vídeo  
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);  
+    
+    // Exibir a prévia da foto no canvas  
+    canvas.style.display = 'block';  
+});  
+
+saveButton.addEventListener('click', () => {  
+    const link = document.createElement('a');  
+    link.href = canvas.toDataURL('image/png');  
+    link.download = 'foto.png';  
+    link.click();  
+});  
+
