@@ -1,5 +1,11 @@
+const express = require('express');  
+const multer = require('multer');  
+const path = require('path');  
+const app = express(); 
 const video = document.getElementById('video');
 const captureButton = document.getElementById('captureButton');
+
+
 
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
@@ -74,3 +80,52 @@ video.addEventListener("play", () => {
         link.click();  
     });
 */
+
+saveButton.onclick = function() {  
+  // Envia a imagem para o servidor  
+  fetch('/upload', {  
+      method: 'POST',  
+      body: dataURLToBlob(dataURL),  
+      headers: {  
+          'Content-Type': 'application/octet-stream'  
+      }  
+  })  
+  .then(response => response.text())  
+  .then(data => alert(data))  
+  .catch(error => console.error('Erro:', error));  
+};  
+
+function dataURLToBlob(dataURL) {  
+  const byteString = atob(dataURL.split(',')[1]);  
+  const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];  
+  const ab = new ArrayBuffer(byteString.length);  
+  const ia = new Uint8Array(ab);  
+  for (let i = 0; i < byteString.length; i++) {  
+      ia[i] = byteString.charCodeAt(i);  
+  }  
+  return new Blob([ab], {type: mimeString});  
+}  
+
+// Configuração do armazenamento do multer  
+const storage = multer.diskStorage({  
+  destination: (req, file, cb) => {  
+      cb(null, 'video_capture/');  
+  },  
+  filename: (req, file, cb) => {  
+      cb(null, `captura_${Date.now()}.png`);  
+  }  
+});  
+
+const upload = multer({ storage: storage });  
+
+app.use(express.static('public'));  
+
+// Rota para receber a captura  
+app.post('/upload', upload.single('image'), (req, res) => {  
+  res.send('Imagem salva com sucesso!');  
+});  
+
+//iniciar o servidor na porta 8080 para acessar o site: http://localhost:8080 
+app.listen(8080, ()=>{
+  console.log("servidor iniciado na porta 8080: http://localhost:8080");
+});
