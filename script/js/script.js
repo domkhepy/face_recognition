@@ -1,5 +1,5 @@
 const video = document.getElementById('video');
-const captureButton = document.getElementById('video');
+const captureButton = document.getElementById('captureButton');
 
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
@@ -34,31 +34,43 @@ video.addEventListener("play", () => {
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);  
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections);  
 
-      console.log(resizedDetections);
+      //console.log(resizedDetections);
     }, 100);  
   });
 
 
 
-  captureButton.addEventListener('click', () => {  
-    // Pausar o vídeo  
-    const stream = video.srcObject;  
-    const tracks = stream.getTracks();  
+    document.getElementById('captureButton').addEventListener('click', () => {  
+        // Pausa o vídeo  
+        video.pause();  
 
-    tracks.forEach(track => track.stop());  
-    video.srcObject = null;  
+        // Define as dimensões do canvas  
+        const canvas = faceapi.createCanvasFromMedia(video); 
+        const context = canvas.getContext('2d'); 
+        const preview = document.getElementById('preview'); 
+        canvas.width = video.videoWidth;  
+        canvas.height = video.videoHeight;  
 
-    // Captura a imagem do vídeo  
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);  
-    
-    // Exibir a prévia da foto no canvas  
-    canvas.style.display = 'block';  
-});  
+        // Desenha o frame atual no canvas  
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);  
 
-saveButton.addEventListener('click', () => {  
-    const link = document.createElement('a');  
-    link.href = canvas.toDataURL('image/png');  
-    link.download = 'foto.png';  
-    link.click();  
-});  
+        // Obtém a imagem como URL  
+        const dataURL = canvas.toDataURL('image/png');  
 
+        // Define a fonte da imagem de pré-visualização  
+        preview.src = dataURL;  
+        preview.style.display = 'block'; // Mostra a imagem  
+
+        // Mostra o botão de salvar  
+        saveButton.style.display = 'inline';  
+    });  
+
+   /* saveButton.addEventListener('click', () => {  
+        // Cria um link para baixar a imagem  
+        const canvas = faceapi.createCanvasFromMedia(video); 
+        const link = document.createElement('a');  
+        link.href = canvas.toDataURL('template/png');  
+        link.download = 'captura.png';  
+        link.click();  
+    });
+*/
