@@ -1,7 +1,7 @@
-const express = require('express');  
+/*const express = require('express');  
 const multer = require('multer');  
 const path = require('path');  
-const app = express(); 
+const app = express(); */
 const video = document.getElementById('video');
 const captureButton = document.getElementById('captureButton');
 
@@ -79,7 +79,7 @@ video.addEventListener("play", () => {
         link.download = 'captura.png';  
         link.click();  
     });
-*/
+
 
 saveButton.onclick = function() {  
   // Envia a imagem para o servidor  
@@ -129,3 +129,4 @@ app.post('/upload', upload.single('image'), (req, res) => {
 app.listen(8080, ()=>{
   console.log("servidor iniciado na porta 8080: http://localhost:8080");
 });
+*/

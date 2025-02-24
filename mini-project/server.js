@@ -17,8 +17,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });  
 
+// Serve static files from 'script/js' directory  
+app.use('/script/js', express.static(path.join(__dirname, 'script/js')));  
+
+// Serve static files from 'models' directory  
+app.use('/models', express.static(path.join(__dirname, 'models')));  
+
 // Rota para upload de imagens  
-app.post('/upload', upload.single('image'), (req, res) => {  
+app.post('/', upload.single('image'), (req, res) => {  
     res.send('Imagem salva com sucesso!');  
 });  
 
