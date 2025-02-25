@@ -1,20 +1,6 @@
-<<<<<<< HEAD
 
 const video = document.getElementById('video');
 const captureButton = document.getElementById('captureButton');
-const saveButton = document.getElementById('saveButton');
-=======
-<<<<<<<< HEAD:script/js/script.js
-/*const express = require('express');  
-const multer = require('multer');  
-const path = require('path');  
-const app = express(); */
-========
-
->>>>>>>> main:mini-project/script/js/script.js
-const video = document.getElementById('video');
-const captureButton = document.getElementById('captureButton');
->>>>>>> main
 
 
 
@@ -57,13 +43,9 @@ video.addEventListener("play", () => {
 
 
 
-<<<<<<< HEAD
-    document.getElementById('captureButton').addEventListener('click', () => {  
-=======
   captureButton.addEventListener('click', () => {  
   
     
->>>>>>> main
         // Pausa o vídeo  
         video.pause();  
 
@@ -77,8 +59,6 @@ video.addEventListener("play", () => {
         // Desenha o frame atual no canvas  
         context.drawImage(video, 0, 0, canvas.width, canvas.height);  
 
-<<<<<<< HEAD
-=======
  // Converte o canvas em um Blob  
  canvas.toBlob((blob) => {  
   const file = new File([blob], "captura.png", { type: 'image/png' });  
@@ -89,21 +69,14 @@ video.addEventListener("play", () => {
   preview.files = dataTransfer.files; // Atribui o arquivo ao input  
 }, 'image/png');  
 /*
->>>>>>> main
         // Obtém a imagem como URL  
         const dataURL = canvas.toDataURL('image/png');  
 
         // Define a fonte da imagem de pré-visualização  
         preview.src = dataURL;  
         preview.style.display = 'block'; // Mostra a imagem  
-<<<<<<< HEAD
-
-        // Mostra o botão de salvar  
-        saveButton.style.display = 'inline';  
-=======
 console.log(dataURL);
       */
->>>>>>> main
     });  
 
    /* saveButton.addEventListener('click', () => {  
@@ -114,68 +87,4 @@ console.log(dataURL);
         link.download = 'captura.png';  
         link.click();  
     });
-<<<<<<< HEAD
 */
-
-saveButton.onclick = function() {  
-  // Envia a imagem para o servidor  
-  fetch('/upload', {  
-      method: 'POST',  
-      body: dataURLToBlob(dataURL),  
-      headers: {  
-          'Content-Type': 'application/octet-stream'  
-      }  
-  })  
-  .then(response => response.text())  
-  .then(data => alert(data))  
-  .catch(error => console.error('Erro:', error));  
-};  
-
-function dataURLToBlob(dataURL) {  
-  const byteString = atob(dataURL.split(',')[1]);  
-  const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];  
-  const ab = new ArrayBuffer(byteString.length);  
-  const ia = new Uint8Array(ab);  
-  for (let i = 0; i < byteString.length; i++) {  
-      ia[i] = byteString.charCodeAt(i);  
-  }  
-  return new Blob([ab], {type: mimeString});  
-}  
-
-
-
-
-
-=======
-
-
-
-
-<<<<<<<< HEAD:script/js/script.js
-// Configuração do armazenamento do multer  
-const storage = multer.diskStorage({  
-  destination: (req, file, cb) => {  
-      cb(null, 'video_capture/');  
-  },  
-  filename: (req, file, cb) => {  
-      cb(null, `captura_${Date.now()}.png`);  
-  }  
-});  
-
-const upload = multer({ storage: storage });  
-
-app.use(express.static('public'));  
-
-// Rota para receber a captura  
-app.post('/upload', upload.single('image'), (req, res) => {  
-  res.send('Imagem salva com sucesso!');  
-});  
-
-//iniciar o servidor na porta 8080 para acessar o site: http://localhost:8080 
-app.listen(8080, ()=>{
-  console.log("servidor iniciado na porta 8080: http://localhost:8080");
-});
-*/
-========
->>>>>>>> main:mini-project/script/js/script.js
->>>>>>> main

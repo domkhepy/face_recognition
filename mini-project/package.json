@@ -1,10 +1,6 @@
 {
   "name": "mini-project",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "",
-=======
->>>>>>> main
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,11 +8,5 @@
   },
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "devDependencies": {
-    "nodemon": "^3.1.9"
-  }
-=======
   "description": ""
->>>>>>> main
 }
