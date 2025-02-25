@@ -4,11 +4,25 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Upload de Imagem</title>  
+    <script defer src="script/js/face-api.min.js"></script>
+    <script defer src="script/js/script.js"></script>
+    <style>
+        canvas{
+            position:absolute;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+    </style>
 </head>  
 <body>  
-    <h1>Upload de Imagem</h1>  
-    <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">  
-        <input type="file" name="image" accept="image/*" required>  
+    <video id="video" autoplay muted width="500" height="500"></video>
+    <button id="captureButton">Capture</button>
+    <button id="captureButton">Play</button>
+    <form  method="post" enctype="multipart/form-data">  
+        <input id="preview" type="file" name="image" accept="image/*" width="640" height="360">  
         <button type="submit">Enviar</button>  
     </form>  
 </body>  
