@@ -11,6 +11,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/');  
     },  
     filename: (req, file, cb) => {  
+        console.log(file);
         cb(null, `${Date.now()}-${file.originalname}`);  
     }  
 });  
@@ -27,6 +28,12 @@ app.use('/models', express.static(path.join(__dirname, 'models')));
 app.post('/', upload.single('image'), (req, res) => {  
     res.send('Imagem salva com sucesso!');  
 });  
+
+// Serve static files from 'script/js' directory  
+app.use('/script/js', express.static(path.join(__dirname, 'script/js')));  
+
+// Serve static files from 'models' directory  
+app.use('/models', express.static(path.join(__dirname, 'models')));  
 
 // Rota para servir o arquivo HTML  
 app.use(express.static('public'));  
