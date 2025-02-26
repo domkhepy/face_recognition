@@ -1,6 +1,8 @@
 
 const video = document.getElementById('video');
 const captureButton = document.getElementById('captureButton');
+const play = document.getElementById('play');
+const output = document.getElementById('output');
 
 
 
@@ -21,7 +23,7 @@ function startVideo(){
 
 video.addEventListener("play", () => {  
     const canvas = faceapi.createCanvasFromMedia(video);  
-    document.body.append(canvas);  
+    output.appendChild(canvas);  
     const displaySize = { width: video.width, height: video.height };  
     faceapi.matchDimensions(canvas, displaySize);  
   
@@ -78,6 +80,10 @@ video.addEventListener("play", () => {
 console.log(dataURL);
       */
     });  
+
+    play.addEventListener('click', () => {
+        video.play();
+    });
 
    /* saveButton.addEventListener('click', () => {  
         // Cria um link para baixar a imagem  
