@@ -4,11 +4,14 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Upload de Imagem</title>  
+    <link rel="stylesheet" href="style.css">
     <script defer src="script/js/face-api.min.js"></script>
     <script defer src="script/js/script.js"></script>
     <style>
         canvas{
-            position:absolute;
+            position: absolute;  
+           /* background-color: tomato;*/
+            
         }
         body{
             margin: 0;
@@ -18,12 +21,24 @@
     </style>
 </head>  
 <body>  
-    <video id="video" autoplay muted width="500" height="500"></video>
-    <button id="captureButton">Capture</button>
-    <button id="captureButton">Play</button>
-    <form  method="post" enctype="multipart/form-data">  
-        <input id="preview" type="file" name="image" accept="image/*" width="640" height="360">  
-        <button type="submit">Enviar</button>  
-    </form>  
+    <div id="container">
+        <h1>Face Recognition</h1>
+        <div id="output">
+            
+           <video id="video" autoplay muted width="500" height="500" hidden></video>
+           
+        </div>
+        <div id="command">
+           <div id="buttons">
+              <button id="captureButton" class="button">Capture</button>
+              <button id="play" class="button">Play</button>
+              <label for="submit"><button id="submit" class="button">Submit</button></label>
+           </div>
+           <form  method="post" enctype="multipart/form-data" hidden >  
+              <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" >  
+              <button id="submit" type="submit">Enviar</button>  
+           </form> 
+        </div> 
+</div>
 </body>  
 </html>  
