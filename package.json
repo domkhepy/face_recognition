@@ -1,26 +1,16 @@
 {
-  "name": "face_recognition",
+  "name": "mini-project",
   "version": "1.0.0",
-  "description": "Estre projecto é de reconhecimento facial usando a linguagem javaScript com Domingos Joaquim Valoi Jr",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/domkhepy/face_recognition.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/domkhepy/face_recognition/issues"
-  },
-  "homepage": "https://github.com/domkhepy/face_recognition#readme",
+  "description": "",
   "dependencies": {
     "express": "^4.21.2",
     "multer": "^1.4.5-lts.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
   }
 }
