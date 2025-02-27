@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Upload de Imagem</title>  
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newUserStyle.css">
     <script defer src="script/js/face-api.min.js"></script>
     <script defer src="script/js/script.js"></script>
+    <script defer src="script/js/managedata.js"></script>
     <style>
         canvas{
             position: absolute;  
@@ -38,9 +40,35 @@
               <button id="play" class="button">Play</button>
               <button class="button" onclick="clickButton('submit')">Submit</button>
            </div>
-           <form id="myForm" method="post" enctype="multipart/form-data" hidden >  
-              <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" >  
-              <button id="submit" type="submit">Enviar</button>  
+
+           <form class="form-register" method="post" enctype="multipart/form-data" > 
+            <div class="text-center">
+                <h1 class="h3 mb-3 font-weight-normal text-light">New User</h1>
+            </div>
+        
+            <span class="msg"></span>
+        
+            <div class="form-label-group">
+                <input name="name" type="text" id="name" class="form-control" placeholder="Digite o nome completo" value="" autofocus required>
+                <label for="name">Nome</label>
+            </div>
+        
+            <div class="form-label-group">
+                <input name="email" type="email" id="email" class="form-control" placeholder="Digite o seu melhor e-mail" value="" required>
+                <label for="email">E-mail</label>
+            </div>
+        
+            <div class="form-label-group">
+                <input name="password" type="password" id="password" class="form-control" placeholder="Digite a senha" value=""  required>
+                <label for="password">Senha</label> 
+            </div>
+ 
+        
+            <p class="mt-2 mb-3 text-muted text-center">
+                <a href="" class="text-decoration-none">Clique aqui</a> para acessar.
+            </p> 
+              <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" hidden >  
+              <button id="submit" type="submit" hidden>Enviar</button>  
            </form> 
         </div> 
             
