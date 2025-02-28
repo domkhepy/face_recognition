@@ -52,6 +52,25 @@
     font-size: 12px;
     color: #777;
   }
+
+
+  button#next{
+    position: relative;
+    left: calc(100% - 80px);
+  }
+
+  p.text-center{
+    position: relative;
+    top: 50px;
+    color: #fff;
+
+  }
+  p.text-center a{
+    color: green;
+  }
+  p.text-center a:hover{
+    color: #fff;
+  }
   
   
   

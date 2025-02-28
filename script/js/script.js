@@ -3,10 +3,17 @@ const video = document.getElementById('video');
 const captureButton = document.getElementById('captureButton');
 const play = document.getElementById('play');
 const output = document.getElementById('output');
+let next = document.getElementById('next');
+let back = document.getElementById('back');
+let command = document.getElementById('buttons');
+let form = document.getElementById('form');
 
+output.hidden=true;
+command.hidden=true;
+video.hidden=true;
 
-
-Promise.all([
+next.addEventListener('click', () => {
+  Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('../models'),
@@ -20,6 +27,26 @@ function startVideo(){
         err => console.error(err)
     )
 }
+ output.hidden=false;
+  command.hidden=false;
+  video.hidden=false;
+  form.hidden=true;
+})
+back.addEventListener('click', () => {
+ 
+    if (stream) {  
+        // Para todos os tracks no stream  
+        stream.getTracks().forEach(track => track.stop());  
+        video.srcObject = null; // Limpa a referência do vídeo  
+    }  
+
+  output.hidden=true;
+   command.hidden=true;
+   video.hidden=true;
+   form.hidden=false;
+ })
+
+
 
 video.addEventListener("play", () => {  
     const canvas = faceapi.createCanvasFromMedia(video);  

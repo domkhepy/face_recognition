@@ -29,7 +29,6 @@ div#container h1 {
 div#output {
     position: relative;
    
-    background-color: green;
     width: 100%;
     height: 380px;
 }
@@ -54,6 +53,11 @@ div#command div {
     width: 310px;
     padding-left:2px;
    }
+
+   div#command div#buttons{
+    width: 420px;
+    padding-left:8px;
+}
 
 div#command div button{
    width: 100px;

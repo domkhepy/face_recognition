@@ -29,19 +29,20 @@
 <body>  
     <div id="container">
         <h1>Face Recognition</h1>
-        <div id="output">
+        <div id="output" >
             
-           <video id="video" autoplay muted width="500" height="500" hidden></video>
+           <video id="video" autoplay muted width="500" height="500"></video>
            
         </div>
         <div id="command">
            <div id="buttons">
+              <button id="back" class="button">Back</button>
               <button id="captureButton" class="button">Capture</button>
               <button id="play" class="button">Play</button>
               <button class="button" onclick="clickButton('submit')">Submit</button>
            </div>
 
-           <form class="form-register" method="post" enctype="multipart/form-data" > 
+           <form id="form" class="form-register" method="post" enctype="multipart/form-data" > 
             <div class="text-center">
                 <h1 class="h3 mb-3 font-weight-normal text-light">New User</h1>
             </div>
@@ -64,9 +65,15 @@
             </div>
  
         
-            <p class="mt-2 mb-3 text-muted text-center">
-                <a href="" class="text-decoration-none">Clique aqui</a> para acessar.
-            </p> 
+            
+            <div>
+                <p class="mt-2 mb-3 text-muted text-center">
+                    <a href="" class="text-decoration-none">Clique aqui</a> para acessar.
+                </p> 
+                <button id="next">Next</button> 
+            </div>
+
+                
               <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" hidden >  
               <button id="submit" type="submit" hidden>Enviar</button>  
            </form> 
