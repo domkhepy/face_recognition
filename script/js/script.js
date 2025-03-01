@@ -13,8 +13,6 @@ let userEmail = document.getElementById('email');
 let userPassword = document.getElementById('password');
 let msg= document.getElementById('msg');
 
-const users=[];
-
 output.hidden=true;
 command.hidden=true;
 video.hidden=true;

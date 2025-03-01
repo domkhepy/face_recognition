@@ -1,5 +1,15 @@
 
+const users = [];
 
+// Função para atualizar a lista de usuários exibida  
+function atualizarLista() {  
+
+    usuarios.forEach(usuario => {  
+        const li = document.createElement('li'); // Cria um novo item de lista  
+        li.textContent = usuario; // Define o texto do item como o nome do usuário  
+        listaUsuarios.appendChild(li); // Adiciona o item à lista  
+    });  
+}  
 // Função para obter os dados do user e a imagem capturada pelo usuário
 document.getElementById('form').addEventListener('submit', function(event) {  
     event.preventDefault(); // Impede o envio padrão do formulário  
@@ -15,8 +25,8 @@ document.getElementById('form').addEventListener('submit', function(event) {
         
         const newUser = new user(users);
         newUser.register(userName, userEmail, userPassword);
-        newUser.getusers();
-        console.log(newUser.users);
+        
+        console.log(newUser.getusers());
     } 
 
 });  
