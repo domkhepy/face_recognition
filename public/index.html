@@ -9,6 +9,7 @@
     <script defer src="script/js/face-api.min.js"></script>
     <script defer src="script/js/script.js"></script>
     <script defer src="script/js/managedata.js"></script>
+    <script defer src="script/js/newuser.js"></script>
     <style>
         canvas{
             position: absolute;  
@@ -29,17 +30,21 @@
 <body>  
     <div id="container">
         <h1>Face Recognition</h1>
-        <div id="output" >
+        <div id="output" hidden>
             
-           <video id="video" autoplay muted width="500" height="500"></video>
+           <video id="video" autoplay muted width="500" height="500" ></video>
            
         </div>
-        <div id="command">
-           <div id="buttons">
+        <div id="command" >
+           <div id="buttons" hidden>
               <button id="back" class="button">Back</button>
               <button id="captureButton" class="button">Capture</button>
               <button id="play" class="button">Play</button>
-              <button class="button" onclick="clickButton('submit')">Submit</button>
+              <button class="button" onclick="
+              if(video.paused){
+              clickButton('submit')}else{
+                alert('Capture the video to submit the image')
+              }">Submit</button>
            </div>
 
            <form id="form" class="form-register" method="post" enctype="multipart/form-data" > 
@@ -47,7 +52,7 @@
                 <h1 class="h3 mb-3 font-weight-normal text-light">New User</h1>
             </div>
         
-            <span class="msg"></span>
+            <span id="msg"></span>
         
             <div class="form-label-group">
                 <input name="name" type="text" id="name" class="form-control" placeholder="Digite o nome completo" value="" autofocus required>
@@ -70,7 +75,7 @@
                 <p class="mt-2 mb-3 text-muted text-center">
                     <a href="" class="text-decoration-none">Clique aqui</a> para acessar.
                 </p> 
-                <button id="next">Next</button> 
+                <a id="next">Next</a> 
             </div>
 
                 

@@ -54,14 +54,15 @@
   }
 
 
-  button#next{
+  a#next{
+    color: #fff;
     position: relative;
-    left: calc(100% - 80px);
+    left: calc(100% - 55px);
   }
 
   p.text-center{
     position: relative;
-    top: 50px;
+    top: 35px;
     color: #fff;
 
   }
@@ -70,6 +71,12 @@
   }
   p.text-center a:hover{
     color: #fff;
+  }
+
+  div.alert{
+    position: relative;
+    text-align: center;
+    color: #b43333;
   }
   
   

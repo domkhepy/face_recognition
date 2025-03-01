@@ -8,11 +8,35 @@ let back = document.getElementById('back');
 let command = document.getElementById('buttons');
 let form = document.getElementById('form');
 
+let userName = document.getElementById('name');
+let userEmail = document.getElementById('email');
+let userPassword = document.getElementById('password');
+let msg= document.getElementById('msg');
+
+const users=[];
+
 output.hidden=true;
 command.hidden=true;
 video.hidden=true;
 
+
 next.addEventListener('click', () => {
+  msg.innerHTML="";
+   if (userName.value === "") {
+    msg.innerHTML = "<div class='alert'> Necessário preencher o campo nome!</div>";
+return false;
+    
+} else if (userEmail.value === "") {
+    msg.innerHTML = "<div class='alert'> Necessário preencher o campo e-mail!</div>";
+    return false;
+} else if (userPassword.value === "") {
+    msg.innerHTML = "<div class='alert'> Necessário preencher o campo senha!</div>";
+    return false;
+}else if (userPassword.value.length < 6) {
+  msg.innerHTML = "<div class='alert'> Necessário ter pelo menos 6 digitos!</div>";
+  return false;
+}else{
+  //start video
   Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
@@ -20,6 +44,7 @@ next.addEventListener('click', () => {
     faceapi.nets.faceExpressionNet.loadFromUri('../models')
 ]).then(startVideo)
 
+//function to start video
 function startVideo(){
     navigator.getUserMedia(
         {video:{}},
@@ -31,12 +56,14 @@ function startVideo(){
   command.hidden=false;
   video.hidden=false;
   form.hidden=true;
+}
 })
+
+
 back.addEventListener('click', () => {
  
-    if (stream) {  
-        // Para todos os tracks no stream  
-        stream.getTracks().forEach(track => track.stop());  
+    if (video) {  
+      
         video.srcObject = null; // Limpa a referência do vídeo  
     }  
 

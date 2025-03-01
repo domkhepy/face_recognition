@@ -1,33 +1,20 @@
 class user{
 
-     constructor(name, email, password){
-        this.name=name;
-        this.email=email;
-        this.password=password;
-        this.users = [{
-            name: "Domingos",
-            email: "domkhepy@gmail.com",
-            password: "123456"
-        },
-        {
-            name: "Marina",
-            email: "marina@gmail.com",
-            password: "123456"
-        },
-          {
-            name: "Lissa",
-            email: "lissa@gmail.com",
-            password: "123456"
-          }  ]
+     constructor(users){
+        this.users = [...users]
     }
 
     //metodo para registar um utilizador
-    register(){
+    register(name, email, password){
         this.users.push({
-            name: this.name, 
-            email: this.email, 
-            password: this.password
+            name: name, 
+            email: email, 
+            password: password
         });
+    }
+
+    getusers(){ 
+        return this.users;
     }
 
     //metodo para listar todos os utilizadores

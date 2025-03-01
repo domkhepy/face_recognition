@@ -59,7 +59,7 @@ div#command div {
     padding-left:8px;
 }
 
-div#command div button{
+div#command div button, a#next{
    width: 100px;
    background-color: lightgray;
    color: black; /* Cor do texto */  
@@ -71,7 +71,7 @@ div#command div button{
    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */  
 }
 
-div#command div button:hover{
-    background-color: #4CAF50; /* Cor de fundo ao passar o mouse */  
-    color: white; /* Cor do texto ao passar o mouse */  
+div#command div button:hover, a#next:hover{
+    background-color: #4CAF50;  
+    color: white;  
 }
