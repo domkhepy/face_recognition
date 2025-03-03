@@ -1,6 +1,10 @@
 
-const users = [];
-
+let users = [{
+name: 'Administrator',
+email: 'admin@facerecognition.com',
+password: 'admin25',
+}];
+const newUser = new user(users);
 // Função para atualizar a lista de usuários exibida  
 function atualizarLista() {  
 
@@ -22,11 +26,9 @@ document.getElementById('form').addEventListener('submit', function(event) {
     const userImage = formData.get('image')
     
     if (userImage) { 
-        
-        const newUser = new user(users);
         newUser.register(userName, userEmail, userPassword);
+        console.log(newUser.getusers());    
         
-        console.log(newUser.getusers());
     } 
-
+users=[...newUser.getusers()];
 });  

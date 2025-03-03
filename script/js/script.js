@@ -7,11 +7,34 @@ let next = document.getElementById('next');
 let back = document.getElementById('back');
 let command = document.getElementById('buttons');
 let form = document.getElementById('form');
+let formLogin = document.getElementById('formLogin');
 
 let userName = document.getElementById('name');
 let userEmail = document.getElementById('email');
 let userPassword = document.getElementById('password');
 let msg= document.getElementById('msg');
+
+let clickRegister = document.getElementById('clickRegister');
+let clickLogin = document.getElementById('clickLogin');
+let logout= document.getElementById('logout');
+let buttonsubmit = document.getElementById('buttonsubmit');
+
+buttonsubmit.addEventListener('click',()=>{
+  formLogin.hidden=false;
+  output.hidden=true;
+command.hidden=true;
+video.hidden=true;
+})
+
+clickRegister.addEventListener('click', () => {
+  formLogin.hidden=false;
+  form.hidden=true;
+})
+
+clickLogin.addEventListener('click', () => {
+  formLogin.hidden=true;
+  form.hidden=false;
+})
 
 output.hidden=true;
 command.hidden=true;
@@ -21,21 +44,22 @@ video.hidden=true;
 next.addEventListener('click', () => {
   msg.innerHTML="";
    if (userName.value === "") {
-    msg.innerHTML = "<div class='alert'> Necessário preencher o campo nome!</div>";
+    msg.innerHTML = "<div class='alert'> Must fill in the name field!</div>";
 return false;
     
 } else if (userEmail.value === "") {
-    msg.innerHTML = "<div class='alert'> Necessário preencher o campo e-mail!</div>";
+    msg.innerHTML = "<div class='alert'> Must fill in the e-mail field!</div>";
     return false;
 } else if (userPassword.value === "") {
-    msg.innerHTML = "<div class='alert'> Necessário preencher o campo senha!</div>";
+    msg.innerHTML = "<div class='alert'> Must fill in the Password field!</div>";
     return false;
 }else if (userPassword.value.length < 6) {
-  msg.innerHTML = "<div class='alert'> Necessário ter pelo menos 6 digitos!</div>";
+  msg.innerHTML = "<div class='alert'> Must have at least 6 digits!</div>";
   return false;
 }else{
   //start video
   Promise.all([
+    faceapi.nets.ssdMobilenetv1.loadFromUri('../models'),  
     faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('../models'),
@@ -129,8 +153,15 @@ video.addEventListener("play", () => {
         video.play();
     });
     function clickButton(button) {  
+      msgLogin.innerHTML="";
+      msg.innerHTML="";
       document.getElementById(button).click();  
     }  
+
+logout.addEventListener('click', () => {
+  userDetails.hidden=true;
+            formLogin.hidden=false;
+})
 
    /* saveButton.addEventListener('click', () => {  
         // Cria um link para baixar a imagem  

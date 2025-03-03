@@ -10,6 +10,7 @@
     <script defer src="script/js/script.js"></script>
     <script defer src="script/js/managedata.js"></script>
     <script defer src="script/js/newuser.js"></script>
+    <script defer src="script/js/loginuser.js"></script>
     <style>
         canvas{
             position: absolute;  
@@ -40,14 +41,15 @@
               <button id="back" class="button">Back</button>
               <button id="captureButton" class="button">Capture</button>
               <button id="play" class="button">Play</button>
-              <button class="button" onclick="
+              <button id="buttonsubmit" class="button" onclick="
               if(video.paused){
               clickButton('submit')}else{
                 alert('Capture the video to submit the image')
               }">Submit</button>
            </div>
 
-           <form id="form" class="form-register" method="post" enctype="multipart/form-data" > 
+        <!--Register form -->
+           <form id="form" class="form-register" method="post" enctype="multipart/form-data" hidden> 
             <div class="text-center">
                 <h1 class="h3 mb-3 font-weight-normal text-light">New User</h1>
             </div>
@@ -56,7 +58,7 @@
         
             <div class="form-label-group">
                 <input name="name" type="text" id="name" class="form-control" placeholder="Digite o nome completo" value="" autofocus required>
-                <label for="name">Nome</label>
+                <label for="name">Name</label>
             </div>
         
             <div class="form-label-group">
@@ -66,14 +68,14 @@
         
             <div class="form-label-group">
                 <input name="password" type="password" id="password" class="form-control" placeholder="Digite a senha" value=""  required>
-                <label for="password">Senha</label> 
+                <label for="password">Password</label> 
             </div>
  
         
             
             <div>
                 <p class="mt-2 mb-3 text-muted text-center">
-                    <a href="" class="text-decoration-none">Clique aqui</a> para acessar.
+                    <a  id="clickRegister" class="form">click here</a> to signe in.
                 </p> 
                 <a id="next">Next</a> 
             </div>
@@ -82,6 +84,51 @@
               <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" hidden >  
               <button id="submit" type="submit" hidden>Enviar</button>  
            </form> 
+
+           <!--Login form -->
+
+           <form id="formLogin" class="form-register" method="post" enctype="multipart/form-data" > 
+            <div class="text-center">
+                <h1 class="h3 mb-3 font-weight-normal text-light">Sign In </h1>
+            </div>
+        
+            <span id="msgLogin"></span>
+        
+            <div class="form-label-group">
+                <input name="email" type="email" id="email" class="form-control" placeholder="Digite o seu melhor e-mail" value="" required>
+                <label for="email">E-mail</label>
+            </div>
+        
+            <div class="form-label-group">
+                <input name="password" type="password" id="password" class="form-control" placeholder="Digite a senha" value=""  required>
+                <label for="password">Password</label> 
+            </div>
+ 
+        
+            
+            <div>
+                <p class="mt-2 mb-3 text-muted text-center">
+                    <a id="clickLogin" class="form">Click here</a> to register.
+                </p> 
+                <a id="next" id="click" onclick="clickButton('submitLogin')">Sign in</a> 
+            </div>
+
+                
+              <input id="preview" type="file" name="image" accept="image/*" width="640" height="360" hidden >  
+              <button id="submitLogin" type="submit" hidden>Send</button>  
+           </form>
+
+           <!--User details -->
+         <div id="userDetails" hidden>
+           
+           <p id="info">
+           
+        </p>
+        <button id="logout" class="button">Log Out</button>
+
+         </div>
+
+
         </div> 
             
 </div>

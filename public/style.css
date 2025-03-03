@@ -75,3 +75,12 @@ div#command div button:hover, a#next:hover{
     background-color: #4CAF50;  
     color: white;  
 }
+
+
+.form{
+    cursor: pointer;
+}
+
+div#userDetails #logout:hover{
+    background-color: red;
+}
