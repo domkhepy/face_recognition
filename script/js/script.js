@@ -20,10 +20,11 @@ let logout= document.getElementById('logout');
 let buttonsubmit = document.getElementById('buttonsubmit');
 
 buttonsubmit.addEventListener('click',()=>{
+  if(video.paused){
   formLogin.hidden=false;
   output.hidden=true;
 command.hidden=true;
-video.hidden=true;
+video.hidden=true;}
 })
 
 clickRegister.addEventListener('click', () => {

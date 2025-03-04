@@ -3,6 +3,7 @@ let users = [{
 name: 'Administrator',
 email: 'admin@facerecognition.com',
 password: 'admin25',
+image: 'admin.jpg'
 }];
 const newUser = new user(users);
 // Função para atualizar a lista de usuários exibida  
@@ -26,7 +27,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     const userImage = formData.get('image')
     
     if (userImage) { 
-        newUser.register(userName, userEmail, userPassword);
+        newUser.register(userName, userEmail, userPassword,userImage);
         console.log(newUser.getusers());    
         
     } 

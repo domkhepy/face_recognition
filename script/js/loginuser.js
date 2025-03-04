@@ -2,9 +2,13 @@
 userDetails = document.getElementById('userDetails');
 info= document.getElementById('info');
 let msgLogin= document.getElementById('msgLogin');
- 
+
+
+
 // Função para obter os dados do user e a imagem capturada pelo usuário
 document.getElementById('formLogin').addEventListener('submit', function(event) {  
+    //const id=Math.floor(Math.random() * (100));
+    //alert(id);
     event.preventDefault(); // Impede o envio padrão do formulário  
 
     const formData = new FormData(this); // 'this' refere-se ao formulário  
@@ -17,7 +21,7 @@ document.getElementById('formLogin').addEventListener('submit', function(event) 
         
 
         if(userExists){
-             
+            /* 
         
             async function compareImages(uploadedImage) {  
                 const storedImage = document.getElementById('storedImage');  
@@ -50,10 +54,13 @@ document.getElementById('formLogin').addEventListener('submit', function(event) 
                     console.log("Falha na autenticação.");  
                 }  
             });  
+            
         
             // Inicializar  
-            loadModels();
-            /** 
+            loadModels();*/
+
+
+             
             userDetails.hidden=false;
             formLogin.hidden=true;
             info.innerHTML="<H2>Welcome back<br>"+userExists.name+"</H2><p>User Information</p>";

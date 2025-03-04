@@ -5,21 +5,17 @@ class user{
     }
 
     //metodo para registar um utilizador
-    register(name, email, password){
+    register(name, email, password, image){
         this.users.push({
             name: name, 
             email: email, 
-            password: password
+            password: password,
+            image: image
         });
     }
 
     getusers(){ 
         return this.users;
-    }
-
-    //metodo para listar todos os utilizadores
-    listUsers(){
-        console.log(this.users);
     }
 
     
